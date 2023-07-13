@@ -2,16 +2,19 @@
 const startButton = document.querySelectorAll("button")[0];
 const stopButton = document.querySelectorAll("button")[1];
 let body = document.querySelector("body");
+stopButton.disabled = true;
 
 startButton.addEventListener("click", (e) => {
   timerColor = setInterval(() => {
       body.style.backgroundColor = getRandomHexColor();
   }, 1000);
     e.target.disabled = true;
+    stopButton.disabled = false;
 });
 
 stopButton.addEventListener("click", (e) => {
     clearInterval(timerColor);
+    e.target.disabled = true;
     startButton.disabled = false;
 });
 
