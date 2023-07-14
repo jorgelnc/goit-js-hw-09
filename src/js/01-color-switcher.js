@@ -5,7 +5,7 @@ let body = document.querySelector("body");
 stopButton.disabled = true;
 
 startButton.addEventListener("click", (e) => {
-  timerColor = setInterval(() => {
+timerColor = setInterval(() => {
       body.style.backgroundColor = getRandomHexColor();
   }, 1000);
     e.target.disabled = true;
