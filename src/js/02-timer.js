@@ -46,12 +46,7 @@ function onBtn() {
   }, 1000);
 }
 
-function updateTime(countTimer) {
-  daysOutput.textContent = `${dataOutput.days}`;
-  hoursOutput.textContent = `${dataOutput.hours}`;
-  minutesOutput.textContent = `${dataOutput.minutes}`;
-  secondsOutput.textContent = `${dataOutput.seconds}`;
-}
+
 
 function convertMs(ms) {
 
@@ -64,5 +59,13 @@ function convertMs(ms) {
   const hours = Math.floor((ms % day) / hour);
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
- return { days, hours, minutes, seconds };
+  dataOutput = { days, hours, minutes, seconds };
+  return dataOutput;
+}
+
+function updateTime(countTimer) {
+  daysOutput.textContent = `${this.dataOutput.days}`;
+  hoursOutput.textContent = `${this.dataOutput.hours}`;
+  minutesOutput.textContent = `${this.dataOutput.minutes}`;
+  secondsOutput.textContent = `${this.dataOutput.seconds}`;
 }
