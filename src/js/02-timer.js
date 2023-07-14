@@ -37,7 +37,7 @@ function onBtn() {
     dateNow = new Date();
 
     if (dateNow < selectedDate) {
-      countTimer = convertMs(selectedDate - dateNow);
+      convertMs(selectedDate - dateNow);
       startBtn.disabled = true;
     } else {
       clearInterval(timer);
