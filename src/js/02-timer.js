@@ -11,6 +11,7 @@ const secondsOutput = document.querySelectorAll(".value")[3];
 startBtn.disabled = true;
 let dateNow = Date.now();
 let selectedDate = [];
+let dataOutput = {};
 
 const options = {
   enableTime: true,
@@ -46,10 +47,7 @@ function onBtn() {
   }, 1000);
 }
 
-
-
 function convertMs(ms) {
-
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
@@ -64,8 +62,8 @@ function convertMs(ms) {
 }
 
 function updateTime(countTimer) {
-  daysOutput.textContent = `${this.dataOutput.days}`;
-  hoursOutput.textContent = `${this.dataOutput.hours}`;
-  minutesOutput.textContent = `${this.dataOutput.minutes}`;
-  secondsOutput.textContent = `${this.dataOutput.seconds}`;
+  daysOutput.textContent = `${dataOutput.days}`;
+  hoursOutput.textContent = `${dataOutput.hours}`;
+  minutesOutput.textContent = `${dataOutput.minutes}`;
+  secondsOutput.textContent = `${dataOutput.seconds}`;
 }
