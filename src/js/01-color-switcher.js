@@ -3,6 +3,7 @@ const startButton = document.querySelectorAll("button")[0];
 const stopButton = document.querySelectorAll("button")[1];
 let body = document.querySelector("body");
 stopButton.disabled = true;
+let timerColor = {};
 
 startButton.addEventListener("click", (e) => {
 timerColor = setInterval(() => {

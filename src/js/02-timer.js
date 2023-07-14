@@ -10,6 +10,7 @@ const minutesOutput = document.querySelectorAll(".value")[2];
 const secondsOutput = document.querySelectorAll(".value")[3];
 startBtn.disabled = true;
 let dateNow = Date.now();
+let selectedDate = [];
 
 const options = {
   enableTime: true,
@@ -17,7 +18,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    selectedDate = selectedDates[0];
+   selectedDate = selectedDates[0];
     if (selectedDate > dateNow) {
     startBtn.disabled = false;
     } else {
