@@ -64,6 +64,6 @@ function convertMs(ms) {
   const hours = Math.floor((ms % day) / hour);
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  dataOutput = { days, hours, minutes, seconds };
+ const dataOutput = { days, hours, minutes, seconds };
   return dataOutput;
 }
