@@ -1,34 +1,41 @@
+import Notiflix from "notiflix";
+
+const form = document.querySelector(".form")
+
+form.addEventListener("submit", submitForm);
+
 function createPromise(position, delay) {
-  const shouldResolve = Math.random() > 0.3;
-  if (shouldResolve) {
-    // Fulfill
-  } else {
-    // Reject
+  return new Promise((resolve, reject) => {
+    const shouldResolve = Math.random() > 0.3;
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve(({ position, delay }));
+      } else {
+        reject({ position, delay });
+      }
+    }, delay)
+  }); 
+}
+
+function submitForm(e) {
+  e.preventDefault();
+
+  let delay = Number(form.elements.delay.value);
+  const step = Number(form.elements.step.value);
+  const amount = Number(form.elements.amount.value);
+
+  for (let i = 1; i <= amount; i += 1) {
+    createPromise(i, delay)
+      .then(fulfilled)
+      .catch(rejected);
+    delay += step;
   }
 }
 
-// let temporizador;
-// let tiempoInicial;
-// let ejecutando;
+function fulfilled({ position, delay }) {
+Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+}
 
-// function iniciarTemporizador() {
-//     var fechaInicial = new Date;
-//     fechaInicial.setFullYear(fechaInicial.getFullYear() + 1);
-//     fechaInicial.setMonth(0);
-//     fechaInicial.setDate(1);
-//     fechaInicial.setHours(0);
-//     fechaInicial.setMinutes(0);
-//     fechaInicial.setSeconds(0);
-//     temporizador = setInterval(() => {
-//         actualizarTemporizador(fechaInicial);
-//     })
-// }
-
-// function actualizarTemporizador(fechaFinal) {
-//     let tiempoActual = Date.now();
-//     let tiempoRestante = fechaFinal - tiempoActual;
-//     let segundos = Math.floor(tiempoRestante / 1000) % 60;
-//     let minutos = Math.floor(tiempoRestante / (1000 * 60)) % 60;
-//     let horas = Math.floor(tiempoRestante / (1000 * 60 * 60) % 24);
-//     let dias = Math.floor(tiempoRestante / (1000 * 60 * 60 * 24));
-// }
+function rejected({ position, delay }) {
+Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`); 
+}
