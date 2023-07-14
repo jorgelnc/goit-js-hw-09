@@ -11,7 +11,6 @@ const secondsOutput = document.querySelectorAll(".value")[3];
 startBtn.disabled = true;
 let dateNow = Date.now();
 let selectedDate = [];
-let dataOutput = {};
 
 const options = {
   enableTime: true,
@@ -39,7 +38,6 @@ function onBtn() {
 
     if (dateNow < selectedDate) {
       countTimer = convertMs(selectedDate - dateNow);
-      updateTime(countTimer);
       startBtn.disabled = true;
     } else {
       clearInterval(timer);
@@ -57,13 +55,10 @@ function convertMs(ms) {
   const hours = Math.floor((ms % day) / hour);
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  dataOutput = { days, hours, minutes, seconds };
-  return dataOutput;
-}
-
-function updateTime(countTimer) {
+  let dataOutput = { days, hours, minutes, seconds };
   daysOutput.textContent = `${dataOutput.days}`;
   hoursOutput.textContent = `${dataOutput.hours}`;
   minutesOutput.textContent = `${dataOutput.minutes}`;
   secondsOutput.textContent = `${dataOutput.seconds}`;
 }
+
